@@ -39,9 +39,20 @@ class studentManger{
 
     //this function is for providing filtered students for searching and for edititng
     function searchResultProvider($class, $section, $searchData){
-        $mysql = new mysqli();
+        $host = 'localhost';
+        $dbName = 'pbaCoursedb2014';
+        $user = 'root';
+        $pass = '';
+        
+        $mysql = new mysqli($host, $user, $pass, $dbName);        
         if($class == 'ALL'){
-            $query = "SELECT  `firstName`, `middleName`, `lastName`, `class`, `section` FROM `studentslist` LIKE '%$searchData%'";
+            $query = "SELECT  `firstName`, `middleName`, `lastName`, `sex`, `class`, `section` FROM `studentslist` LIKE '%$searchData%'";
+            $ask = $mysql->query($query);
+            if($ask->num_rows > 0){
+                while($row = $ask->fetch_assoc()){
+
+                }
+            }
         }
     }
 }
