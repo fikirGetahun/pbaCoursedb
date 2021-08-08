@@ -8,7 +8,7 @@ global $id;
     <script>
         $(document).ready(function(){
             $('#back').click(function(){
-                $('container2').load('viewPage.php')
+                $('#container2').load('viewPage.php')
             })
 
         })
@@ -81,12 +81,13 @@ if($_POST['id'] && !empty($_POST['id'])){
                 <div id="status"> Note: <?php echo $row['note']; ?> </div>
                 <span id="photo" class="edit" onclick="formCaller('note', 'note', <?php echo $id ?> );" >Edit</span>
                 <div id="note"></div>
+                <div id="back">Back</div>
             </div>
             
             
 <?php   }
 ?>
-        <div id="back">Back</div>
+        
 
 <?php 
         
