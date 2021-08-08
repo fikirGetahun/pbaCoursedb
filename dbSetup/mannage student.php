@@ -25,8 +25,8 @@ class studentManger{
     }
 
 // this function is for adding the edited row when request is requested
-    function studentEdit($editedFile, $colomun){
-        $query = "INSERT INTO `studentlist`(`'$colomun'`) VALUES ('$editedFile')";
+    function studentEdit($editedFile, $colomun, $sid){
+        $query = "UPDATE `studentlist` SET '$colomun' =  '$editedFile'  WHERE `id` = '$sid'";
         $mysql = new mysqli();
         $ask = $mysql->query($query);
         if($ask){
@@ -37,24 +37,7 @@ class studentManger{
     }
 
 
-    //this function is for providing filtered students for searching and for edititng
-    function searchResultProvider($class, $section, $searchData){
-        $host = 'localhost';
-        $dbName = 'pbaCoursedb2014';
-        $user = 'root';
-        $pass = '';
-        
-        $mysql = new mysqli($host, $user, $pass, $dbName);        
-        if($class == 'ALL'){
-            $query = "SELECT  `firstName`, `middleName`, `lastName`, `sex`, `class`, `section` FROM `studentslist` LIKE '%$searchData%'";
-            $ask = $mysql->query($query);
-            if($ask->num_rows > 0){
-                while($row = $ask->fetch_assoc()){
 
-                }
-            }
-        }
-    }
 }
 
 $manageStudent = new studentManger
