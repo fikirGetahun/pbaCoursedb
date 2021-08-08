@@ -28,14 +28,19 @@ class studentManger{
 
 // this function is for adding the edited row when request is requested
     function studentEdit($editedFile, $colomun, $sid){
-        $query = "UPDATE `studentlist` SET '`$colomun`' =  '$editedFile'  WHERE `studentslist`.`id` = '$sid'";
+        echo $editedFile;
+        echo $colomun;
+        echo $sid;
+        
+        $query = "UPDATE `studentslist` SET `$colomun` =  '$editedFile'  WHERE `studentslist`.`id` = '$sid'";
+        
         include('connect.php');
         $ask = $mysql->query($query);
         if($ask){
-            echo 'it worked';
+            echo 'yes';
             return true;
         }else{
-            echo 'no';  
+            echo 'no';
             return false;
         }
     }

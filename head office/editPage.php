@@ -1,6 +1,6 @@
 <?php 
 require('../dbSetup/connect.php');
-
+global $id;
 ?>
 
 <head>
@@ -35,11 +35,11 @@ if($_POST['id'] && !empty($_POST['id'])){
         while($row = $ask->fetch_assoc()){
             ?>
             <div id="container">
-                <span id="photo"></span> <span class="edit" id="photo" onclick="formCaller('editForm', 'photo', <?php echo $id ?> );" >Edit</span>
+                <span id="photo"></span> <span class="edit" id="photo" onclick="formCaller('editForm', 'photo', '<?php echo $id ?>' );" >Edit</span>
                 <div id="editForm"></div>
 
-                <span id="name"><?php echo $row['firstName'].' '.$row['middleName'].' '.$row['lastName'];  ?></span>
-                <span id="name" class="edit"  onclick="formCaller('studentName', 'name', <?php echo $id ?> );" >Edit</span>
+                <span id="name">Name: <?php echo $row['firstName'].' '.$row['middleName'].' '.$row['lastName'];  ?></span>
+                <span id="name" class="edit"  onclick="formCaller('studentName', 'name', <?php echo $id; ?> );" >Edit</span>
                 <div id="studentName"></div>
 
                 <div id="gender">Gender: <?php echo $row['sex']; ?>  </div>
