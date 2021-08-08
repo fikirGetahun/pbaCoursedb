@@ -17,6 +17,9 @@ require('../dbSetup/connect.php');
             function deletePage(id){
                 $('#content').load('deletePage.php', {id: id})
             }
+            function fullView(id){
+                $('#content').load('fullView.php')
+            }
 
         </script>
     </head>
@@ -59,6 +62,7 @@ require('../dbSetup/connect.php');
                         <td><?php echo $row['firstName'].' '.$row['middleName'].' '.$row['lastName'];?></td>
                         <td><?php echo $row['class'].' '.$row['section']; ?></td>
                         <td><?php echo $row['sex']; ?> </td>
+                        <td id="full" onclick="fullView(<?php echo $row['id']; ?>)">Full View</td>
                         <td id="edit" onclick="editPage(<?php echo $row['id'];?>);" >Edit</td>
                         <td id="delete" onclick="deletePage(<?php echo $row['id'];?>);" >Delete</td>
                         </tr>

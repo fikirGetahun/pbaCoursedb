@@ -46,9 +46,13 @@ if($_POST['id'] && !empty($_POST['id'])){
                 <span onclick="formCaller('sex', 'sex', <?php echo $id ?> );" class="edit" id="gender">Edit</span>
                 <div id="sex"></div>
 
-                <span id="class"> Class: <?php echo $row['class'].''. $row['section']; ?> </span>
+                <span id="class"> Class: <?php echo $row['class']; ?> </span>
                 <span id="photo" class="edit" onclick="formCaller('classE', 'class', <?php echo $id ?> );" >Edit</span>
                 <div id="classE"></div>
+
+                <span id="class"> Section: <?php echo  $row['section']; ?> </span>
+                <span id="photo" class="edit" onclick="formCaller('sectionE', 'section', <?php echo $id ?> );" >Edit</span>
+                <div id="sectionE"></div>
 
                 <div id="fatherName"> Father's Name: <?php echo $row['fatherName']; ?> </div>
                 <span class="edit" onclick="formCaller('fatherNameE', 'fatherName', <?php echo $id ?> );" id="fatherName">Edit</span>
