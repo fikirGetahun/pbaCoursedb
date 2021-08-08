@@ -12,21 +12,24 @@ if(isset($_POST['username']) && isset($_POST['password'])){
     $result = $mysql->query($query); 
     
     
-        if($result->num_rows == 0){
-            $show = false;
-        }else{
-            
-            while($row = $result->fetch_assoc()){
-                $_SESSION['id'] = $row['id'];
-                header('Location: officeLogin.php');
-            
-            } 
-        }
+   
+            if($result->num_rows >= 0){
+                while($row = $result->fetch_assoc()){
+                    if($row['username'] == $username && $row['password'] == $pass){
+                        $_SESSION['id'] = $row['id'];
+                        header('Location: officeLogin.php');    
+                    }else{
+                        $show = false;
+                    }
+    
+                }
+            }if($result->num_rows == 0){
+                $show = false;
+            }
+
+        
 
     
-    if($result->num_rows == 0){
-        
-    }
 
     }   
 
