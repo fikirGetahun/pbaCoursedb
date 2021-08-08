@@ -4,18 +4,19 @@ require('connect.php');
 class studentManger{
     
     public function studentAdder($firstName, $middleName, $lastName, $sex, $class, $section, $fatherName, $motherName, $fatherPhone, $motherPhone, $address, $photoPath, $note ){
-        $host = 'localhost';
-        $dbName = 'pbaCoursedb2014';
-        $user = 'root';
-        $pass = '';
+        // $host = 'localhost';
+        // $dbName = 'pbaCoursedb2014';
+        // $user = 'root';
+        // $pass = '';
+        include('connect.php');
         $status = 'REGISTERD';
         
-        $mysql = new mysqli($host, $user, $pass, $dbName);
-        $query = "INSERT INTO `studentslist` (`firstName`, `middleName`, `lastName`, `sex` , `class`, `section`, `fatherName`, `motherName`, `fatherPhone`, `motherPhone`, `address`, `status`, `photoPath`, `note`)
+        $mysql1 = new mysqli($host, $user, $pass, $dbName);
+        $query1 = "INSERT INTO `studentslist` (`firstName`, `middleName`, `lastName`, `sex` , `class`, `section`, `fatherName`, `motherName`, `fatherPhone`, `motherPhone`, `address`, `status`, `photoPath`, `note`)
          VALUES('$firstName','$middleName','$lastName', '$sex','$class','$section','$fatherName','$motherName','$fatherPhone','$motherPhone',
          '$address','$status','$photoPath','$note')";
 
-        $ask = $mysql->query($query);
+        $ask = $mysql1->query($query1);
         // if($ask){
         //     return 'yes';
         // }
@@ -27,12 +28,14 @@ class studentManger{
 
 // this function is for adding the edited row when request is requested
     function studentEdit($editedFile, $colomun, $sid){
-        $query = "UPDATE `studentlist` SET '$colomun' =  '$editedFile'  WHERE `id` = '$sid'";
-        $mysql = new mysqli();
+        $query = "UPDATE `studentlist` SET '`$colomun`' =  '$editedFile'  WHERE `studentslist`.`id` = '$sid'";
+        include('connect.php');
         $ask = $mysql->query($query);
         if($ask){
+            echo 'it worked';
             return true;
         }else{
+            echo 'no';  
             return false;
         }
     }

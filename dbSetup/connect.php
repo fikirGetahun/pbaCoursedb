@@ -5,7 +5,6 @@ global $user;
 global $pass;
 global $mysql;
 
-
 $host = 'localhost';
 $dbName = 'pbaCoursedb2014';
 $user = 'root';

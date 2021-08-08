@@ -1,6 +1,7 @@
 <?php
 require_once('../dbSetup/connect.php');
 // $mysql2 = new mysqli('localhost','root', ''); 
+
 global $show;
 if(isset($_POST['username']) && isset($_POST['password'])){
     $username = $_POST['username'];

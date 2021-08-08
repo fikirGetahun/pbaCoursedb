@@ -1,10 +1,34 @@
 <?php
-require('../dbSetup/connect.php');
 require('../dbSetup/mannage student.php');
 global $id;
 if(isset( $_POST['id'])){
     $id = $_POST['id'];
 }
+?>
+<head>
+    <script src="../modules/jquery.js"></script>
+    <script>
+        $('form').on('submit', function(){
+            $.ajax({
+                url: 'editForm.php',
+                type: 'post',
+                success: function(res, text){
+                    alert(text)
+                    if(text != 'succses'){
+                        alert(res)
+                    }
+                }
+            })
+
+            // return false;
+        })
+
+
+    </script>
+</head>
+
+<?php
+
 
 if(isset($_POST['firstName'], $_POST['middleName'], $_POST['lastName'])){
     $ask = $manageStudent->studentEdit($_POST['firstName'], 'firstName', $id );
