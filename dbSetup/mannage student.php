@@ -37,6 +37,8 @@ class studentManger{
         }
     }
 
+    //check admin or not function to filter out unwanted things that the teacher can access
+
 
 
 }
