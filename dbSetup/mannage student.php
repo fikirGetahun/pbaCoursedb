@@ -3,11 +3,12 @@ require('connect.php');
 //this class holds every api concerning in the head office about student
 class studentManger{
     
-    public function studentAdder($firstName, $middleName, $lastName, $sex, $class, $section, $fatherName, $motherName, $fatherPhone, $motherPhone, $address, $status, $photoPath, $note ){
+    public function studentAdder($firstName, $middleName, $lastName, $sex, $class, $section, $fatherName, $motherName, $fatherPhone, $motherPhone, $address, $photoPath, $note ){
         $host = 'localhost';
         $dbName = 'pbaCoursedb2014';
         $user = 'root';
         $pass = '';
+        $status = 'REGISTERD';
         
         $mysql = new mysqli($host, $user, $pass, $dbName);
         $query = "INSERT INTO `studentslist` (`firstName`, `middleName`, `lastName`, `sex` , `class`, `section`, `fatherName`, `motherName`, `fatherPhone`, `motherPhone`, `address`, `status`, `photoPath`, `note`)
