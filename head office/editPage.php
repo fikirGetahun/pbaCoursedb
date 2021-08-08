@@ -1,6 +1,27 @@
 <?php 
 require('../dbSetup/connect.php');
 
+?>
+
+<head>
+    <script src="../modules/jquery.js"></script>
+    <script>
+        $(document).ready(function(){
+            //here
+
+        })
+        function formCaller(idName, type){
+                const ash = '#'
+                $(ash + idName).load('editForm.php', { 
+                    type: type
+                })
+            }
+    </script>
+</head>
+
+
+<?php
+
 
 if($_POST['id'] && !empty($_POST['id'])){
     $id = $_POST['id'];
@@ -13,7 +34,8 @@ if($_POST['id'] && !empty($_POST['id'])){
         while($row = $ask->fetch_assoc()){
             ?>
             <div id="container">
-                <span id="photo"></span> <span id="photo">Edit</span>
+                <span id="photo"></span> <span id="photo" onclick="formCaller('editForm', 'photo' );" >Edito</span>
+                <div id="editForm"></div>
                 <span id="name"><?php echo $row['firstName'].' '.$row['middleName'].' '.$row['lastName'];  ?></span><span id="name">Edit</span>
                 <div id="gender">Gender: <?php echo $row['sex']; ?>  </div><span id="gender">Edit</span>
                 <div id="fatherName"> Father's Name: <?php echo $row['fatherName']; ?> </div><span id="fatherN">Edit</span>
