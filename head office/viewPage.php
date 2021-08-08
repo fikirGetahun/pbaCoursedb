@@ -18,7 +18,7 @@ require('../dbSetup/connect.php');
                 $('#content').load('deletePage.php', {id: id})
             }
             function fullView(id){
-                $('#content').load('fullView.php')
+                $('#content').load('fullView.php', {id: id})
             }
 
         </script>

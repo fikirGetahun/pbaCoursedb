@@ -53,6 +53,15 @@ if(isset( $_POST['id'])){
             $('#fatherP').click(function(){
                 $('#fatherPhoneE').empty()
             })
+            $('#motherP').click(function(){
+                $('#motherPhoneE').empty()
+            })
+            $('#addressE').click(function(){
+                $('#addressEX').empty()
+            })
+            $('#noteE').click(function(){
+                $('#noteEX').empty()
+            })
         })
 
 
@@ -96,6 +105,21 @@ if(isset($_POST['motherName'], $_POST['id'])){
 // for fathers phone edit form api
 if(isset($_POST['fatherPhone'], $_POST['id'])){
     $ask = $manageStudent->studentEdit($_POST['fatherPhone'], 'fatherPhone', $_POST['id']);
+}
+
+// for mothers phone edit form api
+if(isset($_POST['motherPhone'], $_POST['id'])){
+    $ask = $manageStudent->studentEdit($_POST['motherPhone'], 'motherPhone', $_POST['id']);
+}
+
+// for address edit form api
+if(isset($_POST['address'], $_POST['id'])){
+    $ask = $manageStudent->studentEdit($_POST['address'], 'address', $_POST['id']);
+}
+
+// for note edit form api
+if(isset($_POST['note'], $_POST['id'])){
+    $ask = $manageStudent->studentEdit($_POST['note'], 'note', $_POST['id']);
 }
 ?>
 
@@ -208,7 +232,7 @@ if(isset($_POST['type'])){
         <div id="fatherNameE">
         <form action="editForm.php" method="POST">
             <label>Father's Name: </label>
-            <input type="text" id="inputPassword5" name="lastName" class="form-control" aria-describedby="passwordHelpBlock">  
+            <input type="text" id="inputPassword5" name="fatherName" class="form-control" aria-describedby="passwordHelpBlock">  
             <input hidden name="id" value="<?php echo $id; ?>">
             <input type="submit" value="Edit">
         </form>
@@ -228,7 +252,7 @@ if(isset($_POST['type'])){
       <div id="motherNameE">
         <form action="editForm.php" method="POST">
             <label>Mother's Name: </label>
-            <input type="text" id="inputPassword5" name="lastName" class="form-control" aria-describedby="passwordHelpBlock">  
+            <input type="text" id="inputPassword5" name="motherName" class="form-control" aria-describedby="passwordHelpBlock">  
             <input hidden name="id" value="<?php echo $id; ?>">
             <input type="submit" value="Edit">
         </form>
@@ -247,7 +271,7 @@ if(isset($_POST['type'])){
       <div id="fatherPhoneE">
         <form action="editForm.php" method="POST">
             <label>Father's Phone: </label>
-            <input type="text" id="inputPassword5" name="lastName" class="form-control" aria-describedby="passwordHelpBlock">  
+            <input type="text" id="inputPassword5" name="fatherPhone" class="form-control" aria-describedby="passwordHelpBlock">  
             <input hidden name="id" value="<?php echo $id; ?>">
             <input type="submit" value="Edit">
         </form>
@@ -261,6 +285,64 @@ if(isset($_POST['type'])){
 }
 
 // form to edit mothers phone no
+if(isset($_POST['type'])){
+    if($_POST['type'] == 'motherPhone'){
+?>
+      <div id="motherPhoneE">
+        <form action="editForm.php" method="POST">
+            <label>Mother's Phone: </label>
+            <input type="text" id="inputPassword5" name="motherPhone" class="form-control" aria-describedby="passwordHelpBlock">  
+            <input hidden name="id" value="<?php echo $id; ?>">
+            <input type="submit" value="Edit">
+        </form>
+        <div id="done" >Done</div>
+        <div id='motherP'>Exit</div>        
+        </div>         
+        
+        
+<?php        
+    }
+}
+
+// form to edit address 
+if(isset($_POST['type'])){
+    if($_POST['type'] == 'address'){
+        ?>
+      <div id="addressE">
+        <form action="editForm.php" method="POST">
+            <label>Address: </label>
+            <textarea class="form-text" id="address" name="address"></textarea> 
+            <input hidden name="id" value="<?php echo $id; ?>">
+            <input type="submit" value="Edit">
+        </form>
+        <div id="done" >Done</div>
+        <div id='addressEX'>Exit</div>        
+        </div>         
+                
+        
+        <?php
+    }
+}
+
+// form to edit note
+if(isset($_POST['type'])){
+    if($_POST['type'] == 'note'){
+        ?>
+      <div id="noteE">
+        <form action="editForm.php" method="POST">
+            <label>Address: </label>
+            <textarea class="form-text" id="address" name="note"></textarea> 
+            <input hidden name="id" value="<?php echo $id; ?>">
+            <input type="submit" value="Edit">
+        </form>
+        <div id="done" >Done</div>
+        <div id='noteEX'>Exit</div>        
+        </div>         
+                 
+        
+        <?php
+    }
+}
 ?>
 
 

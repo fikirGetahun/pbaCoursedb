@@ -7,7 +7,9 @@ global $id;
     <script src="../modules/jquery.js"></script>
     <script>
         $(document).ready(function(){
-            //here
+            $('#back').click(function(){
+                $('container2').load('viewPage.php')
+            })
 
         })
         function formCaller(idName, type, id){
@@ -34,7 +36,7 @@ if($_POST['id'] && !empty($_POST['id'])){
     if($ask->num_rows != 0){
         while($row = $ask->fetch_assoc()){
             ?>
-            <div id="container">
+            <div id="container2">
                 <span id="photo"></span> <span class="edit" id="photo" onclick="formCaller('editForm', 'photo', '<?php echo $id ?>' );" >Edit</span>
                 <div id="editForm"></div>
 
