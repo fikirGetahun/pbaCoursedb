@@ -138,10 +138,10 @@ $(document).ready(function(){
         <textarea class="form-text" id="address" name="address"></textarea> 
         <div id="passwordHelpBlock" class="form-text"> 
         </div>
-        <label for="inputPassword5" class="form-label">Status</label>
+        <!-- <label for="inputPassword5" class="form-label">Status</label>
         <input type="text" id="inputPassword5" name="status" class="form-control" aria-describedby="passwordHelpBlock">
         <div id="passwordHelpBlock" class="form-text">
-        </div>
+        </div> -->
         <label for="inputPassword5" class="form-label">Note about student</label><br>
         <textarea class="form-text" id="address" name="note"></textarea> 
         <div id="passwordHelpBlock" class="form-text"> 
