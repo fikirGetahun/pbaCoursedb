@@ -15,7 +15,10 @@ if(isset($_POST['auth'])){
             $('#tabContent2').load('addTeacher.php')
             $('.nav-link').not(this).removeClass('active')
         })
-
+        $('#viewTeacher').click(function(){
+            $('#tabContent2').load('viewTeacher.php')
+            $('.nav-link').not(this).removeClass('active')
+        })
     </script>
 </head>
 <nav>

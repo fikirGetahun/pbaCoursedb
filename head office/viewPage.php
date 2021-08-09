@@ -36,11 +36,12 @@ if(isset($_POST['auth2'])){
 
 <?php
 
-    if(isset($_POST['class']) || !empty($_POST['class']) || isset($_POST['section']) || !empty($_POST['section']) || isset($_POST['searchData']) || !empty($_POST['searchData'])){
+    if(isset($_POST['class'], $_POST['section'], $_POST['searchData'])){
+        $isStudent = $_POST['student'];
         $class = $_POST['class'];
         $section = $_POST['section'];
         $searchData = $_POST['searchData'];
-        if($class == "All"){
+        if($class == "All" || $section == "All"){
             $query = "SELECT `id`, `firstName`, `middleName`, `lastName`, `sex`, `class`, `section` FROM `studentslist` WHERE `firstName` LIKE '%$searchData%'";
             $ask = $mysql->query($query);
             if($ask->num_rows > 0){
@@ -96,5 +97,126 @@ if(isset($_POST['auth2'])){
             }
         }
     }
+        if(isset($_POST['division'], $_POST['searchData'], $_POST['student']) ){
+            $query = "SELECT  `firstName`, `middleName`, `lastName`, `sex`,  `department`, `division` FROM `teacherslist` WHERE 1";
+            $ask = $mysql->query($query);
+            if($ask->num_rows > 0){
+                $i = 1;
+                ?> 
+                <div id="content">
+                <table class="table caption-top">
+                <caption>List of users</caption>
+                <thead>
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Department</th>
+                    <th scope="col">Division</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php
+                while($row = $ask->fetch_assoc()){
+                    ?>
+            
+                
+                    
+                        <tr>
+                        <th scope="row"><?php echo $i;?></th>
+                        <td><?php echo $row['firstName'].' '.$row['middleName'].' '.$row['lastName'];?></td>
+                        <td><?php echo $row['sex']; ?> </td>
+                        <td><?php echo $row['department']; ?> </td>
+                        <td><?php echo $row['division']; ?> </td>
+                        <td id="full" onclick="fullView(<?php echo $row['id']; ?>)">Full View</td>
+                        <?php
+                            if($auth3 == 'ADMIN'){
+                                ?>
+                                <td id="edit" onclick="editPage(<?php echo $row['id'];?>);" >Edit</td>
+                                <td id="delete" onclick="deletePage(<?php echo $row['id'];?>);" >Delete</td>                                   
+                                <?php
+                            }
+                        ?>
+
+                        </tr>
+
+            
+            
+                    <?php
+                    $i = $i + 1;
+                }
+                ?>
+                    </tbody>
+                </table>
+            </div>      
+                <?php
+            }else{
+                echo 'no match bro';
+            }           
+        }
+        
+        
+        
+        
+        
+        else{ //for searching class and section if 'all' is not selected
+            $query = "SELECT `id`, `firstName`, `middleName`, `lastName`, `sex`, `class`, `section`
+             FROM `studentslist` WHERE `firstName` LIKE '%$searchData%' AND `class` LIKE '$class' AND `section` LIKE '$section'  ";
+            $ask = $mysql->query($query);
+            if($ask->num_rows > 0){
+                $i = 1;
+                ?> 
+                <div id="content">
+             <table class="table caption-top">
+                <caption>List of users</caption>
+                <thead>
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Class</th>
+                    <th scope="col">Gender</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php
+                while($row = $ask->fetch_assoc()){
+                    ?>
+            
+               
+                    
+                        <tr>
+                        <th scope="row"><?php echo $i;?></th>
+                        <td><?php echo $row['firstName'].' '.$row['middleName'].' '.$row['lastName'];?></td>
+                        <td><?php echo $row['class'].' '.$row['section']; ?></td>
+                        <td><?php echo $row['sex']; ?> </td>
+                        <td id="full" onclick="fullView(<?php echo $row['id']; ?>)">Full View</td>
+                        <?php
+                            if($auth3 == 'ADMIN'){
+                                ?>
+                                <td id="edit" onclick="editPage(<?php echo $row['id'];?>);" >Edit</td>
+                                <td id="delete" onclick="deletePage(<?php echo $row['id'];?>);" >Delete</td>                                   
+                                <?php
+                            }
+                        ?>
+
+                        </tr>
+
+         
+            
+                    <?php
+                   $i = $i + 1;
+                }
+                ?>
+                    </tbody>
+                </table>
+            </div>      
+                <?php
+            }else{
+                echo 'no match bro';
+            }
+
+        }
+        
+    
 
 ?>
