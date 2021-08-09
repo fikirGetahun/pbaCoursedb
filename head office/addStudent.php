@@ -22,11 +22,7 @@ if(isset($_POST['firstName']) || isset($_POST['middleName']) ||
         $fatherPhone, $motherPhone, $address, $status, $x, $note );
         
         
-        // if($insert){
-        //     echo 'succc';
-        // }else{
-        //     echo 'no';
-        // }
+       echo $insert;
         
 }
 

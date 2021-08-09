@@ -43,7 +43,6 @@ if(isset($_POST['auth'])){
   </div>
 </nav>
 <div class="tab-content" id="tabContent">
-
 </div>
 <input id="auth2" hidden value="<?php echo $auth2; ?>">
 

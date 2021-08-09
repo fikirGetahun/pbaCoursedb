@@ -33,7 +33,7 @@ if(isset($_SESSION['id'])){
         <script>
             $(document).ready(function(){
                 $('#home').click(function(event){
-                    $('#v-pills-tabContent').show().load('tabsManageStudents.php')
+                    $('#v-pills-tabContent')
                     $('#home').addClass('active')
                     $('.nav-link').not('#home').removeClass('active')
                 })
@@ -47,11 +47,11 @@ if(isset($_SESSION['id'])){
                     $('#student').addClass('active')
                     $('.nav-link').not('#student').removeClass('active')
                 })
-                $('#teacher').click(function(){
-                    $auth = $('#auth').val()
-                    $('#teacher').addClass('active')
-                    $('.nav-link').not('#teacher').removeClass('active')
-                    $('##v-pills-tabContent').load('tabsManageTeacher.php', {auth: $auth } )
+                $('#teacher1').click(function(event){
+                    $autht = $('#auth').val()
+                    $('#v-pills-tabContent').show().load('tabsManageTeacher.php', {auth: $autht } )
+                    $('#teacher1').addClass('active')
+                    $('.nav-link').not('#teacher1').removeClass('active')
                 })
                 $('#class').click(function(){
                     $('#class').show().addClass('active')
@@ -81,7 +81,7 @@ if(isset($_SESSION['id'])){
                     <?php 
                     if($auth == 'ADMIN'){
                     ?>
-                    <button class="nav-link" id="teacher" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Manage Teacher</button>
+                    <button class="nav-link" id="teacher1" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Manage Teacher</button>
                     <?php
                     }
                     ?>            
@@ -102,7 +102,7 @@ if(isset($_SESSION['id'])){
                 <div class="tab-content" id="v-pills-tabContent">
 
                 </div>
-                <input id="auth" hidden value="<?php echo $auth;?>"
+                <input id="auth" hidden value="<?php echo $auth;?>">
         </div>
     </div>
 

@@ -17,12 +17,12 @@ class studentManger{
          '$address','$status','$photoPath','$note')";
 
         $ask = $mysql1->query($query1);
-        // if($ask){
-        //     return 'yes';
-        // }
-        // else{
-        //     return 'no';
-        // }
+        if($ask){
+            return 'yes';
+        }
+        else{
+            return 'no';
+        }
 
     }
 
