@@ -12,9 +12,9 @@ class studentManger{
         $status = 'REGISTERD';
         
         $mysql1 = new mysqli($host, $user, $pass, $dbName);
-        $query1 = "INSERT INTO `studentslist` (`firstName`, `middleName`, `lastName`, `sex` , `class`, `section`, `fatherName`, `motherName`, `fatherPhone`, `motherPhone`, `address`, `status`, `photoPath`, `note`)
+        $query1 = "INSERT INTO `studentslist` (`firstName`, `middleName`, `lastName`, `sex` , `class`, `section`, `fatherName`, `motherName`, `fatherPhone`, `motherPhone`, `address`, `status`, `note`)
          VALUES('$firstName','$middleName','$lastName', '$sex','$class','$section','$fatherName','$motherName','$fatherPhone','$motherPhone',
-         '$address','$status','$photoPath','$note')";
+         '$address','$status','$note')";
 
         $ask = $mysql1->query($query1);
         if($ask){
@@ -45,8 +45,18 @@ class studentManger{
         }
     }
 
-    //check admin or not function to filter out unwanted things that the teacher can access
-
+// this function is to insert the teacher
+    function teacherAdder($firstName, $middleName, $lastName, $sex, $department, $profession, $username, $password, $phone, $division, $auth){
+        include("connect.php");
+        $query = "INSERT INTO `teacherslist`( `firstName`, `middleName`, `lastName`, `sex`, `department`, `profession`, `username`, `password`, `phone`, `division`, `auth`)
+         VALUES ('$firstName','$middleName','$lastName','$sex','$department','$profession','$username','$password','$phone','$division','$auth')";
+        $ask = $mysql->query($query);
+        if($ask){
+            return 'yes';
+        }else{
+            return 'no';
+        }
+    }
 
 
 }

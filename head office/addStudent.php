@@ -15,11 +15,10 @@ if(isset($_POST['firstName']) || isset($_POST['middleName']) ||
         $motherName = $_POST['mothersName']; $fatherPhone = $_POST['fathersPhone'];  $motherPhone = $_POST['mothersPhone'];
         $address = $_POST['address']; $status = $_POST['status']; $note = $_POST['note']; $sex = $_POST['sex'];
 
-        $x = "tebed";
 
         $insert = $manageStudent->studentAdder($firstName,$middleName
         ,$lastName, $sex, $class, $section, $fatherName, $motherName,
-        $fatherPhone, $motherPhone, $address, $status, $x, $note );
+        $fatherPhone, $motherPhone, $address, $status, $note );
         
         
        echo $insert;
@@ -46,12 +45,18 @@ $(document).ready(function(){
                 alert(mo)
 
         if(mo == 'success'){
-            $('#win').show('slow').delay('10000')
+            $('#win').show('slow')
+            setTimeout(function() {
+            $('#win').hide();
+            }, 3000);
             $('form').find('input:text').val('');     
             $('form').find('input:number').val('');   
             $('textarea').find('input:text').val(''); 
         }else{
             $('#loss').show('slow')
+            setTimeout(function() {
+            $('#loss').hide();
+            }, 3000);
         }
         
             }
