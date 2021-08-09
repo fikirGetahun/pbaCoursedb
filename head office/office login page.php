@@ -3,28 +3,32 @@ require_once('../dbSetup/connect.php');
 // $mysql2 = new mysqli('localhost','root', ''); 
 
 global $show;
-if(isset($_POST['username']) && isset($_POST['password'])){
+
+if(isset($_POST['username']) && isset($_POST['password']) && !empty($_POST['username']) && !empty($_POST['password']) ){
     $username = $_POST['username'];
     $pass = $_POST['password'];
-    $query = "SELECT * FROM `headoffice` WHERE `username` LIKE '$username' AND `password` LIKE '$username'";
+    echo $username;
+    echo $pass;
+    $query = "SELECT * FROM `teacherslist` WHERE `username` LIKE '$username' AND `password` LIKE '$pass'";
 
     
     $result = $mysql->query($query); 
     
     
-   
-            if($result->num_rows >= 0){
+    $show = true;
+            if($result-> num_rows == 0){
+                $show = false;
+            }if($result-> num_rows > 0){
                 while($row = $result->fetch_assoc()){
                     if($row['username'] == $username && $row['password'] == $pass){
                         $_SESSION['id'] = $row['id'];
                         header('Location: officeLogin.php');    
                     }else{
-                        $show = false;
+                        // $show = false;
                     }
     
                 }
-            }if($result->num_rows == 0){
-                $show = false;
+                // $show = false;
             }
 
         
@@ -50,6 +54,20 @@ if(isset($_POST['username']) && isset($_POST['password'])){
 <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
 <!------ Include the above in your HEAD tag ---------->
+    <script src="../modules/jquery.js"></script>
+    <script>
+        $('form').on('subit', function(){
+            $.ajax({
+                url: 'office login page.php',
+                type: 'post',
+                data: $('form').serialize(),
+                success: function(res, text){
+                    
+                }
+            })
+            return false;
+        })
+    </script>
 
 <body>
     <div id="login">
@@ -68,13 +86,13 @@ if(isset($_POST['username']) && isset($_POST['password'])){
                                 <label for="password" class="text-info">Password:</label><br>
                                 <input type="text" name="password" id="password" class="form-control">
                             </div>
-                            <?php 
-                                if($show === false){
-                                    echo '<h2>wrong user</h2>';
-                                }
-                            
+                            <?php
+                            if($show === false){
+                                echo '<div id="wrong">Wrong USER</div>';
+                            }
                             
                             ?>
+                            
                             <div class="form-group">
                                 <input type="submit" name="subit" class="btn btn-info btn-md" value="Login">
                             </div>

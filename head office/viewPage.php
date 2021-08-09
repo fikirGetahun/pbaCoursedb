@@ -1,6 +1,13 @@
 <?php 
 require('../dbSetup/connect.php');
 
+global $auth2;
+//to filter out the edit and delete for teacher logs in b/c teachers dont have autherization
+if(isset($_POST['auth2'])){
+    $auth3 = $_POST['auth2'];
+}
+
+
 ?>
 <html>
     <head>
@@ -63,8 +70,15 @@ require('../dbSetup/connect.php');
                         <td><?php echo $row['class'].' '.$row['section']; ?></td>
                         <td><?php echo $row['sex']; ?> </td>
                         <td id="full" onclick="fullView(<?php echo $row['id']; ?>)">Full View</td>
-                        <td id="edit" onclick="editPage(<?php echo $row['id'];?>);" >Edit</td>
-                        <td id="delete" onclick="deletePage(<?php echo $row['id'];?>);" >Delete</td>
+                        <?php
+                            if($auth3 == 'ADMIN'){
+                                ?>
+                                <td id="edit" onclick="editPage(<?php echo $row['id'];?>);" >Edit</td>
+                                <td id="delete" onclick="deletePage(<?php echo $row['id'];?>);" >Delete</td>                                   
+                                <?php
+                            }
+                        ?>
+
                         </tr>
 
          
@@ -75,7 +89,6 @@ require('../dbSetup/connect.php');
                 ?>
                     </tbody>
                 </table>
-
             </div>      
                 <?php
             }else{

@@ -1,7 +1,24 @@
 <?php 
-
+require('../dbSetup/connect.php');
+global $class;
+$class1 = array(); //according to normalization, a single cell must have a single data so we insert assignd class per row
+// to filter out the admin and teacher as thery are to show what is autherized for both
 if(isset($_SESSION['id'])){
-    $name = $_SESSION['id'];
+    $id = $_SESSION['id'];
+    $query="SELECT * FROM `teacherslist` WHERE `id` LIKE '$id'";
+    $ask = $mysql->query($query);
+    if($ask){
+        while($row = $ask->fetch_assoc()){
+            array_push($class1, $row['assignedClass'].''.$row['section']);
+            $auth = $row['auth'];
+            $name= $row['firstName'].' '.$row['middleName'].' '.$row['lastName'];
+            $dep = $row['department'];
+        }
+
+    
+    }
+
+
 }
 
 
@@ -25,7 +42,8 @@ if(isset($_SESSION['id'])){
                     $('.nav-link').not('#headOffice').removeClass('active')
                 })
                 $('#student').click(function(event){
-                    $('#v-pills-tabContent').show().load('tabsManageStudents.php')
+                    $auth = $('#auth').val()
+                    $('#v-pills-tabContent').show().load('tabsManageStudents.php', {auth: $auth })
                     $('#student').addClass('active')
                     $('.nav-link').not('#student').removeClass('active')
                 })
@@ -49,17 +67,31 @@ if(isset($_SESSION['id'])){
     
 
     <body>
+    
 
     <!-- vertical tabs to go to manage students, manage teachers.. -->
     <div id="vertical" style="float: left;">
+            
             <div class="d-flex align-items-start">
                 <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <button class="nav-link active" id="home" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</button>
-                    <button class="nav-link" id="headOffice" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Manage Head Office</button>
                     <button class="nav-link" id="student" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Manage Student</button>
+                    <?php 
+                    if($auth == 'ADMIN'){
+                    ?>
                     <button class="nav-link" id="teacher" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Manage Teacher</button>
+                    <?php
+                    }
+                    ?>            
                     <button class="nav-link" id="class" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Manage Class</button>
+                    <button class="nav-link" id="headOffice" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Manage Course Material</button>
+                    <?php
+                        if($auth == 'ADMIN'){
+                    ?>
                     <button class="nav-link" id="report" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Report Card</button>
+                    <?php
+                        }
+                    ?>
 
                 </div>
 
@@ -68,6 +100,7 @@ if(isset($_SESSION['id'])){
                 <div class="tab-content" id="v-pills-tabContent">
 
                 </div>
+                <input id="auth" hidden value="<?php echo $auth;?>"
         </div>
     </div>
 

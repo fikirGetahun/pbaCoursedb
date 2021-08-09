@@ -1,6 +1,9 @@
 <?php
-
-
+global $auth2;
+if(isset($_POST['auth'])){
+    $auth2 = $_POST['auth'];
+  }
+  
 
 
  ?>
@@ -23,7 +26,8 @@
                             $('form').find('[name]').each(function(){
                                 $req.push($(this).val())
                              })
-                             $('#content').load('viewPage.php', {searchData : $req[0], class: $req[1], section: $req[2]})
+                             $auth2 = $('#auth2').val()
+                             $('#content').load('viewPage.php', {searchData : $req[0], class: $req[1], section: $req[2], auth2: $auth2 })
                    
                         }
                     })
@@ -70,6 +74,6 @@
            
 
         </div>
-
+        <input id="auth2" hidden value="<?php echo $auth2; ?>">
     </div>
 
