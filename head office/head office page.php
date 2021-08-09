@@ -48,8 +48,10 @@ if(isset($_SESSION['id'])){
                     $('.nav-link').not('#student').removeClass('active')
                 })
                 $('#teacher').click(function(){
+                    $auth = $('#auth').val()
                     $('#teacher').addClass('active')
                     $('.nav-link').not('#teacher').removeClass('active')
+                    $('##v-pills-tabContent').load('tabsManageTeacher.php', {auth: $auth } )
                 })
                 $('#class').click(function(){
                     $('#class').show().addClass('active')
@@ -67,7 +69,7 @@ if(isset($_SESSION['id'])){
     
 
     <body>
-    
+    <div><h1>Wellcome! MR. <?php echo $name; ?></h1></div>
 
     <!-- vertical tabs to go to manage students, manage teachers.. -->
     <div id="vertical" style="float: left;">
