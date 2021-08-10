@@ -7,7 +7,7 @@ require('../dbSetup/connect.php');
     <script>
         $(document).ready(function(){
             $('#backk').click(function(){
-                $('#container4').load('viewPage.php')
+                $('#container4').empty()
             })
         })
 

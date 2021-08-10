@@ -1,7 +1,9 @@
 <?php
 require('../dbSetup/connect.php');
 
-
+if(isset($_POST['auth2'])){
+    $auth2 = $_POST['auth2'];
+}
 
 ?>
    <head>

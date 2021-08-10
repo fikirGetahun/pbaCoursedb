@@ -14,7 +14,7 @@ if(isset($_POST['id'])){
         $name = $row['firstName'].' '.$row['middleName'].' '.$row['lastName'];
         $sex = $row['sex'];
         $department = $row['department'];
-        array_push($assClass, $row['class'].''.$row['section']); //because i will assign more than one class for the teacher so i will place it in to db besd on 1NF normalizing, therefor i will place the class and section in an array 
+        array_push($assClass, $row['assignedClass'].''.$row['section']); //because i will assign more than one class for the teacher so i will place it in to db besd on 1NF normalizing, therefor i will place the class and section in an array 
         $pro = $row['profession'];
         $photoP = $row['photoPath'];
         $phone = $row['phone'];
@@ -30,22 +30,25 @@ if(isset($_POST['id'])){
 <head>
     <script src="../modules/jquery.js"></script>
     <script>
-
+        $(document).ready()
+        $('#back2').click(function(){
+            $('#cont').empty()
+        })
     </script>
 </head>
-<div>
-    <h5>--------------------------------------------------- </h5><br>
+<div id="cont">
+    <h6>--------------------------------------------------- </h6><br>
     <h6><?php echo $auth; ?></h6>
-    <h5>Name: </h5><br>
+    <h6>Name: </h6><br>
     <h6><?php echo $name ?></h6>
 
-    <h5>Gender: </h5><br>
+    <h6>Gender: </h6><br>
     <h6><?php echo $sex ?></h6>
-    <h5>Division: </h5><br>
+    <h6>Division: </h6><br>
     <h6><?php echo $division; ?></h6>
-    <h5>Department: </h5><br>
+    <h6>Department: </h6><br>
     <h6><?php echo $department; ?></h6>
-    <h5>Teaching Class: </h5><br>
+    <h6>Teaching Class: </h6><br>
     <?php
     foreach($assClass as $val ){
     ?>
@@ -53,8 +56,10 @@ if(isset($_POST['id'])){
     <?php
     }
     ?>
-    <h5>Profession: </h5><br>
+    <h6>Profession: </h6><br>
     <h6><?php echo $pro; ?></h6>
-    <h5>Phone Number: </h5><br>
+    <h6>Phone Number: </h6><br>
     <h6><?php echo $phone; ?></h6>
+
+    <div id='back2'>GO BACK</div>
 </div>

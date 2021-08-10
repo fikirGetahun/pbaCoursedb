@@ -11,14 +11,19 @@ if(isset($_POST['auth'])){
 <head>
     <script src="../modules/jquery.js"></script>
     <script>
-        $('#addTeacher').click(function(){
+        $(document).ready(function(){
+            $('#addTeacher').click(function(){
             $('#tabContent2').load('addTeacher.php')
             $('.nav-link').not(this).removeClass('active')
         })
         $('#viewTeacher').click(function(){
-            $('#tabContent2').load('viewTeacher.php')
+                $authtT = $('#valll').val()
+                $('#tabContent2').load('viewTeacher.php', {auth2: $authtT})
+            
             $('.nav-link').not(this).removeClass('active')
         })
+        })
+
     </script>
 </head>
 <nav>
@@ -31,3 +36,4 @@ if(isset($_POST['auth'])){
 <div class="tab-content" id="tabContent2">
 Home
 </div>
+<input hidden id="valll" value="<?php echo $authT; ?>">
