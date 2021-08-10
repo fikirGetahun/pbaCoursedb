@@ -44,7 +44,7 @@ require('../dbSetup/connect.php');
 
         <label>Division:</label><br>
         <select class="form-select" style="float:left;" id="division"  name="division" aria-label="Default select example">
-        <option selected>ALL</option>
+        <option value="All" selected>ALL</option>
         <option value="kg">KG</option>
         <option value="PM">PRIMERY SCHOOL</option>
         <option value="MD" >MIDDLE SCHOOL</option>
