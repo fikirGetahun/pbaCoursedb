@@ -105,7 +105,8 @@ if(isset($_POST['auth2'])){
     }
 
     // teachers viewing if block
-    if(isset($_POST['division'], $_POST['searchData'], $_POST['student']) ){
+    if(isset($_POST['division'], $_POST['searchData'], $_POST['student'], $_POST['auth2']) ){
+        $auth3 = $_POST['auth2'];
         $division = $_POST['division'];
         $search = $_POST['searchData'];
         if($division == 'All'){ // when all division is selected 
