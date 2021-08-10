@@ -59,6 +59,14 @@ class studentManger{
     }
 
 
+// this function will edit teachers info
+    function teacherEdit($id, $colomun, $data){
+        include("connect.php");
+        $query = "UPDATE `teacherslist` SET `$colomun` =  '$data'  WHERE `teacherslist`.`id` = '$id'";
+        $ask = $mysql->query($query);
+        
+    }
+
 }
 
 $manageStudent = new studentManger

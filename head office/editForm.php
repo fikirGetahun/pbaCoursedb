@@ -75,6 +75,8 @@ if(isset($_POST['firstName'], $_POST['middleName'], $_POST['lastName'], $_POST['
     $first = $_POST['firstName'];
     $id3= $_POST['id'];
     $ask = $manageStudent->studentEdit($first, 'firstName', $id3 );
+    $ask = $manageStudent->studentEdit($first, 'middleName', $id3 );
+    $ask = $manageStudent->studentEdit($first, 'lastName', $id3 );
 }
 
 // for gender edit form api

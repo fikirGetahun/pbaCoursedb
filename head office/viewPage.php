@@ -18,8 +18,8 @@ if(isset($_POST['auth2'])){
                     $('#content').load('test.php')
                 })
             })
-            function teacherEdit(id){
-                $('#content').load('teacherEdit.php', {id: id})
+            function teacherEdit(id, edit){
+                $('#content').load('teacherEditPage.php', {id: id, edit: edit})
             }
             function teacherFullView(id){
                 $('#content').load('teacherFullView.php', {id: id})
@@ -144,7 +144,7 @@ if(isset($_POST['auth2'])){
                         <?php
                             if($auth3 == 'ADMIN'){
                                 ?>
-                                <td id="edit" onclick="teacherEdit(<?php echo $row['id'];?>);" >Edit</td>
+                                <td id="edit" onclick="teacherEdit(<?php echo $row['id'];?>, true);" >Edit</td>
                                 <td id="delete" onclick="deletePage(<?php echo $row['id'];?>);" >Delete</td>                                   
                                 <?php
                             }
@@ -202,7 +202,7 @@ if(isset($_POST['auth2'])){
                             <?php
                                 if($auth3 == 'ADMIN'){
                                     ?>
-                                    <td id="edit" onclick="teacherEdit(<?php echo $row['id'];?>);" >Edit</td>
+                                    <td id="edit" onclick="teacherEdit(<?php echo $row['id'];?>, true);" >Edit</td>
                                     <td id="delete" onclick="deletePage(<?php echo $row['id'];?>);" >Delete</td>                                   
                                     <?php
                                 }
