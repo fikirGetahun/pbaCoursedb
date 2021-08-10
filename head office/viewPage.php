@@ -109,7 +109,7 @@ if(isset($_POST['auth2'])){
         $division = $_POST['division'];
         $search = $_POST['searchData'];
         if($division == 'All'){ // when all division is selected 
-            $query = "SELECT  `firstName`, `middleName`, `lastName`, `sex`,  `department`, `division` FROM `teacherslist` WHERE `firstName` LIKE '%$search%' ";
+            $query = "SELECT `id`, `firstName`, `middleName`, `lastName`, `sex`,  `department`, `division` FROM `teacherslist` WHERE `firstName` LIKE '%$search%' ";
             $ask = $mysql->query($query);
             if($ask->num_rows > 0){
                 $i = 1;
@@ -166,7 +166,7 @@ if(isset($_POST['auth2'])){
             }           
         }
         if($division != 'All' ){// whwn a division is selected
-            $query = "SELECT  `firstName`, `middleName`, `lastName`, `sex`,  `department`, `division` FROM `teacherslist` WHERE `division` LIKE '$division' AND `firstName` LIKE '%$search%' ";
+            $query = "SELECT `id`, `firstName`, `middleName`, `lastName`, `sex`,  `department`, `division` FROM `teacherslist` WHERE `division` LIKE '$division' AND `firstName` LIKE '%$search%' ";
                 
                 $ask = $mysql->query($query);
                 if($ask->num_rows > 0){
