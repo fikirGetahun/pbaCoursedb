@@ -15,34 +15,37 @@ if(isset($_POST['auth'])){
         <script>
             $(document).ready(function(){
                 $('#error').hide()
-                $('form').on('submit', function(){
 
-                    $.ajax({
-                        url: 'viewStudent.php',
-                        method: 'post',
-                        data: $('form').serialize(),
-                        success: function(res, mo){
-                            $req = []
-                            $('form').find('[name]').each(function(){
-                                $req.push($(this).val())
-                             })
-                             $auth2 = $('#auth2').val()
-                             $('#content').load('viewPage.php', {searchData : $req[0], class: $req[1], section: $req[2], auth2: $auth2, student: true })
-                   
-                        }
-                    })
+$('form').on('submit', function(){
+    return false
+})
+                $('input').keyup(function(event){
+                    event.preventDefault();
+$.ajax({
+    url: 'viewStudent.php',
+    method: 'post',
+    data: $('form').serialize(),
+    success: function(res, mo){
+        $req = []
+        $('form').find('[name]').each(function(){
+            $req.push($(this).val())
+         })
+         $auth2 = $('#auth2').val()
+         $('#content').load('viewPage.php', {searchData : $req[0], class: $req[1], section: $req[2], auth2: $auth2, student: true })
 
-                
-                    return false
-                })
+    }
+})
+$('form').on('submit', function(){
+return false
+})
 
-                
+})
             })
 
         </script>
     </head>
     <div>
-        <form action="viewStudent.php" enctype="multipart/form-data">
+        <form action="" enctype="multipart/form-data">
         <label>Search</label>
         <input type="text" id="inputPassword5" name="searchData" class="form-control" aria-describedby="passwordHelpBlock">
         <label>Class:</label>

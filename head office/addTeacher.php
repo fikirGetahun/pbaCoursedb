@@ -108,8 +108,6 @@ $_POST['sex2'], $_POST['division'], $_POST['department'], $_POST['profession'],
             <option value="amharic">AMHARIC</option>
             <option value="civics">CIVICS</option>
             <option value="socialStudies">SOCIAL STUDIES</option>
-
-
         </select>
         <label for="inputPassword5" class="form-label">Profession</label>
         <textarea class="form-text" id="address" name="profession"></textarea> 
