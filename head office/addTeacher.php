@@ -21,6 +21,8 @@ $_POST['sex2'], $_POST['division'], $_POST['department'], $_POST['profession'],
             $('#show').hide()
             $('#lost').hide()
             document.getElementById('division').addEventListener('change', function() {
+                $('.mddleS').show()
+                $('.primery').show()
             if(this.value == 'MD'){
                 $('.primery').hide()
             }

@@ -54,8 +54,10 @@ if(isset($_SESSION['id'])){
                     $('.nav-link').not('#teacher1').removeClass('active')
                 })
                 $('#class').click(function(){
+                    $autht = $('#auth').val()
                     $('#class').show().addClass('active')
                     $('.nav-link').not('#class').removeClass('active')
+                    $('#v-pills-tabContent').load('tabsManageClass.php', {auth: $autht})
                 })
                 $('#report').click(function(){
                     $('#report').addClass('active')
