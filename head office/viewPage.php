@@ -281,7 +281,7 @@ if(isset($_POST['auth2'])){
         $auth3 = $_POST['auth2'];
         $division = $_POST['division'];
         $search = $_POST['searchData'];
-        if($division == "All" && $department == 'All' ){ // when all division is selected 
+        if($division == "All"){ // when all division is selected 
             $query = "SELECT `id`, `firstName`, `middleName`, `lastName`, `sex`,  `department`, `division` FROM `teacherslist` WHERE `firstName` LIKE '%$search%' ";
             $ask = $mysql->query($query);
             if($ask->num_rows > 0){
@@ -338,7 +338,7 @@ if(isset($_POST['auth2'])){
                 echo 'no match bro';
             }           
         }
-        if($department == 'All' && $division != 'All' ){// whwn a division is selected
+        if($division != 'All' ){// whwn a division is selected
             $query = "SELECT `id`, `firstName`, `middleName`, `lastName`, `sex`,  `department`, `division` 
             FROM `teacherslist` WHERE `division` LIKE '$division' AND `firstName` LIKE '%$search%' ";
                 
@@ -400,127 +400,11 @@ if(isset($_POST['auth2'])){
             
 
         }
-        if($division == "All" && $department != 'All'){
-            $query = "SELECT `id`, `firstName`, `middleName`, `lastName`, `sex`,  `department`, `division` 
-            FROM `teacherslist` WHERE `department` LIKE '$department' AND `firstName` LIKE '%$search%' ";
-                
-                $ask = $mysql->query($query);
-                if($ask->num_rows > 0){
-                    $i = 1;
-                    ?> 
-                    <div id="content">
-                    <table class="table caption-top">
-                    <caption>List of users</caption>
-                    <thead>
-                        <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Gender</th>
-                        <th scope="col">Department</th>
-                        <th scope="col">Division</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <?php
-                    while($row = $ask->fetch_assoc()){
-                        ?>
-                
-                    
-                        
-                            <tr>
-                            <th scope="row"><?php echo $i;?></th>
-                            <td><?php echo $row['firstName'].' '.$row['middleName'].' '.$row['lastName'];?></td>
-                            <td><?php echo $row['sex']; ?> </td>
-                            <td><?php echo $row['department']; ?> </td>
-                            <td><?php echo $row['division']; ?> </td>
-                            <td id="full" onclick="teacherFullView(<?php echo $row['id']; ?>)">Full View</td>
-                            <?php
-                                if($auth3 == 'ADMIN'){
-                                    ?>
-                                    <td id="edit" onclick="teacherEdit(<?php echo $row['id'];?>, true);" >Edit</td>
-                                    <td id="delete" onclick="deletePage(<?php echo $row['id'];?>);" >Delete</td>                                   
-                                    <?php
-                                }
-                            ?>
-    
-                            </tr>
-    
-                
-                
-                        <?php
-                        $i = $i + 1;
-                    }
-                    ?>
-                        </tbody>
-                    </table>
-                </div>      
-                    <?php
-                }else{
-                    echo 'no match bro';
-                }               
-        }
-        
-        
-        
-        
-        
-        if(isset($_POST['class'], $_POST['section'], $_POST['searchData'])){ //for searching class and section if 'all' is not selected
-            $query = "SELECT `id`, `firstName`, `middleName`, `lastName`, `sex`, `class`, `section`
-             FROM `studentslist` WHERE `firstName` LIKE '%$searchData%' AND `class` LIKE '$class' AND `section` LIKE '$section'  ";
-            $ask = $mysql->query($query);
-            if($ask->num_rows > 0){
-                $i = 1;
-                ?> 
-                <div id="content">
-             <table class="table caption-top">
-                <caption>List of users</caption>
-                <thead>
-                    <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Class</th>
-                    <th scope="col">Gender</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <?php
-                while($row = $ask->fetch_assoc()){
-                    ?>
-            
-               
-                    
-                        <tr>
-                        <th scope="row"><?php echo $i;?></th>
-                        <td><?php echo $row['firstName'].' '.$row['middleName'].' '.$row['lastName'];?></td>
-                        <td><?php echo $row['class'].' '.$row['section']; ?></td>
-                        <td><?php echo $row['sex']; ?> </td>
-                        <td id="full" onclick="fullView(<?php echo $row['id']; ?>)">Full View</td>
-                        <?php
-                            if($auth3 == 'ADMIN'){
-                                ?>
-                                <td id="edit" onclick="editPage(<?php echo $row['id'];?>);" >Edit</td>
-                                <td id="delete" onclick="deletePage(<?php echo $row['id'];?>);" >Delete</td>                                   
-                                <?php
-                            }
-                        ?>
 
-                        </tr>
+        
+        
+        
 
-         
-            
-                    <?php
-                   $i = $i + 1;
-                }
-                ?>
-                    </tbody>
-                </table>
-            </div>      
-                <?php
-            }else{
-                echo 'no match bro';
-            }
-
-        }
         
     
 
