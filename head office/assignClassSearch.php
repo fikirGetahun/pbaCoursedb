@@ -25,7 +25,7 @@
                     url: 'assignClassList.php',
                     type: 'post',
                     data: $('form').serialize(),
-                    success: function(){
+                    success: function(res, text){
                         if(text == 'success'){
                             $reqq=[]
                             $('form').find('[name]').each(function(){
@@ -53,18 +53,17 @@
         <label>Search</label>
         <input type="text" id="inputPassword5" name="searchData" class="form-control" aria-describedby="passwordHelpBlock">
 
-
         <label>Division:</label><br>
-        <select  require class="form-select" style="float:left;" id="division"  name="division" aria-label="Default select example">
-        <option selected>NONE</option>
+        <select class="form-select" style="float:left;" id="division"  name="division" aria-label="Default select example">
+        <option value="All" selected>ALL</option>
         <option value="kg">KG</option>
         <option value="PM">PRIMERY SCHOOL</option>
         <option value="MD" >MIDDLE SCHOOL</option>
         </select>
-
+        
         <label>Department:</label><br>
         <select require class="form-select" style="float:left;" name="department" aria-label="Default select example">
-            <option selected>NONE </option>
+            <option value="All" selected>ALL</option>
             <option class="mddleS" value="maths">BIOLOGY</option>
             <option class="mddleS" value="chemistriy">CHEMISTRY</option>
             <option class="mddleS" value="physics">PHYSICS</option>
