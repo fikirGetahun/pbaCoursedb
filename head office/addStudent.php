@@ -74,15 +74,15 @@ $(document).ready(function(){
 <!-- "succses.php?type=addStudnet" -->
     <form  action="addStudent.php" method="POST" enctype="multipart/form-data">
         <label for="inputPassword5" class="form-label">First Name</label>
-        <input type="text" id="inputPassword5" name="firstName" class="form-control" aria-describedby="passwordHelpBlock">
+        <input require  type="text" id="inputPassword5" name="firstName" class="form-control" aria-describedby="passwordHelpBlock">
         <div id="passwordHelpBlock" class="form-text">
         </div>
         <label for="inputPassword5" class="form-label">Middle Name</label>
-        <input type="text" id="inputPassword5" name="middleName" class="form-control" aria-describedby="passwordHelpBlock">
+        <input require  type="text" id="inputPassword5" name="middleName" class="form-control" aria-describedby="passwordHelpBlock">
         <div id="passwordHelpBlock" class="form-text">
         </div>
         <label for="inputPassword5" class="form-label">Last Name</label>
-        <input type="text" id="inputPassword5" name="lastName" class="form-control" aria-describedby="passwordHelpBlock">
+        <input require  type="text" id="inputPassword5" name="lastName" class="form-control" aria-describedby="passwordHelpBlock">
         <div id="passwordHelpBlock" class="form-text">
         </div>
         
