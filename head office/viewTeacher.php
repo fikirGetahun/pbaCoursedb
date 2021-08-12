@@ -12,9 +12,15 @@ if(isset($_POST['auth2'])){
         <script src="../modules/jquery.js"></script>
         <script>
             $(document).ready(function(){
-                $('#error').hide()
-                $('form').on('submit', function(){
 
+                
+                $('#error').hide()
+// but when the user searchs empty seartch
+                $('form').on('submit', function(){
+                    return false;
+                })
+                // the concept is, when user enters a word to search, then the keyup event will trigger, and it searches. but when the user clicks the search button it will never return to reload thats whay we inserted the form on subit evernt in side the key up event
+                $('input').keyup(function(){
                     $.ajax({
                         url: 'viewStudent.php',
                         method: 'post',
@@ -30,9 +36,13 @@ if(isset($_POST['auth2'])){
                         }
                     })
 
-                
-                    return false
+                    $('form').on('submit', function(){
+                        return false
+                    })
+
                 })
+
+
 
                 
             })

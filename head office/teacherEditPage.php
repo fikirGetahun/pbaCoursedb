@@ -50,7 +50,9 @@ if(isset($_POST['edit'])){
 </head>
 <div id="cont">
     <h6>--------------------------------------------------- </h6><br>
-    <h6><?php echo $auth; ?></h6>
+    <h6><?php echo $auth; ?></h6><span class="ed" onclick="teacherEditForm('authh',<?php echo $id; ?>, 'auth')">Edit</span><span class="del">Delete</span>
+    <div id="authh"></div>
+    
     <h6>Name: </h6><br>
     <h6><?php echo $name ?></h6><span class="ed" onclick="teacherEditForm('namet',<?php echo $id; ?>, 'name')">Edit</span><span class="del">Delete</span>
     <div id="namet"></div>
@@ -76,6 +78,7 @@ if(isset($_POST['edit'])){
     <?php
     }
     ?>
+    <br>
     <h6>Profession: </h6><br>
     <h6><?php echo $pro; ?></h6><span class="ed" onclick="teacherEditForm('prot',<?php echo $id; ?>, 'profession')">Edit</span><span class="del">Delete</span>
     <div id="prot"></div>

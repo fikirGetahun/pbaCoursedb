@@ -20,6 +20,7 @@ if(isset( $_POST['id'])){
                 success: function(res, text){
                     if(text == 'success'){
                         // alert(text)
+                        $('#editedName').show()
                     }else{
                         alert('DATA BASE ERROR')
                     }
@@ -146,6 +147,7 @@ if(isset($_POST['type'])){
             <div id="done" >Done</div>
             <div id='n'>Exit</div>
         </div>
+        <div id="editedName">Edited. </div>
         
         <?php
     }
@@ -168,7 +170,7 @@ if(isset($_POST['type'])){
             <div id="done" >Done</div>
             <div id='s'>Exit</div>
             </div>
-
+            <div id="editedName">Edited. </div>
         <?php
     }
 }
@@ -200,7 +202,7 @@ if(isset($_POST['type'])){
         <div id="done" >Done</div>
         <div id='c'>Exit</div>
         </div>
-
+        <div id="editedName">Edited. </div>
         <?php
     }
 }
@@ -222,7 +224,7 @@ if(isset($_POST['type'])){
         <div id="done" >Done</div>
         <div id='sc'>Exit</div>
         </div>
-
+        <div id="editedName">Edited. </div>
         <?php
     }
 }
@@ -241,7 +243,7 @@ if(isset($_POST['type'])){
         <div id="done" >Done</div>
         <div id='fatherN'>Exit</div>        
         </div>
-
+        <div id="editedName">Edited. </div>
         
         
         <?php
@@ -261,7 +263,7 @@ if(isset($_POST['type'])){
         <div id="done" >Done</div>
         <div id='motherN'>Exit</div>        
         </div>        
-        
+        <div id="editedName">Edited. </div>
         <?php
     }
 }
@@ -280,7 +282,7 @@ if(isset($_POST['type'])){
         <div id="done" >Done</div>
         <div id='fatherP'>Exit</div>        
         </div>         
-        
+        <div id="editedName">Edited. </div>
         
         <?php
     }
@@ -300,7 +302,7 @@ if(isset($_POST['type'])){
         <div id="done" >Done</div>
         <div id='motherP'>Exit</div>        
         </div>         
-        
+        <div id="editedName">Edited. </div>
         
 <?php        
     }
@@ -320,7 +322,7 @@ if(isset($_POST['type'])){
         <div id="done" >Done</div>
         <div id='addressEX'>Exit</div>        
         </div>         
-                
+        <div id="editedName">Edited. </div>      
         
         <?php
     }
@@ -341,7 +343,7 @@ if(isset($_POST['type'])){
         <div id='noteEX'>Exit</div>        
         </div>         
                  
-        
+        <div id="editedName">Edited. </div>
         <?php
     }
 }
