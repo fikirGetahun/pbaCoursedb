@@ -64,7 +64,7 @@
         <label>Department:</label><br>
         <select require class="form-select" style="float:left;" name="department" aria-label="Default select example">
             <option value="All" selected>ALL</option>
-            <option class="mddleS" value="maths">BIOLOGY</option>
+            <option class="mddleS" value="biology">BIOLOGY</option>
             <option class="mddleS" value="chemistriy">CHEMISTRY</option>
             <option class="mddleS" value="physics">PHYSICS</option>
             <option class="primery" value="scinceInEnglish">SCINCE IN ENGLISH</option>
