@@ -20,21 +20,31 @@ if(isset($_POST['id'])){
         $auth = $row['auth'];
     }    
 }
+global $nob;
+// to transform how many classes is to be assigned to a teacher
+if(isset($_POST['classe'])){
+    $nob = $_POST['classe'];
+    echo "inn";
+}
 
 ?>
 
 <head>
     <script src="../modules/jquery.js"></script>
     <script>
-        $('form').on('submit', function(){
+        $('#sel').on('submit', function(){
             $.ajax({
-                url: 'classAssigner.php',
-                type: 'post',
-                data: $('form').serialize(),
+                url: 'assignClassForm.php',
+                method: 'post',
+                data: $('#sel').serialize(),
                 success: function(index, text){
-                    if(text == 'succses'){
-   
-                    }
+                    $cno = []
+                    $('#sel').find('[name]').each(function(){
+                         $cno.push(this.value)
+                    })
+                    $id = $('#idv').val()
+                        $('#listter').load('classAssigner.php', {no: $cno[0], id: $id})
+                    
                 }
             })
             return false;
@@ -42,12 +52,12 @@ if(isset($_POST['id'])){
     </script>
 </head>
 <div>
-    <form action="classAssigner.php" method="POST">
+    <form id="sel" action="assignClassForm.php" method="POST">
         <h5>Name</h5><span><?php echo $name; ?></span>
         <h5>Department: </h5><span><?php echo $department; ?></span>
         <h4>Division: </h4><span><?php echo $division; ?></span>
         <h3>Select How Many Classes To Assign TO: </h3>
-        <select class="form-select" style="float:left;" name="class" aria-label="Default select example">
+        <select class="form-select" style="float:left;" name="classe" aria-label="Default select example">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -59,9 +69,9 @@ if(isset($_POST['id'])){
             <option value="9">9</option>
             <option value="10">10</option>
         </select>
-
         <input type="submit" value="List Teachers">
     </form>
+   <input id="idv" hidden value="<?php echo $id; ?>">
     <div id="listter">
 
     </div>

@@ -24,7 +24,7 @@ if(isset($_POST['dep'], $_POST['search'], $_POST['div'])){
     $department = $_POST['dep'];
     if($division == "All" && $department == 'All'){
         $query = "SELECT `id`, `firstName`, `middleName`, `lastName`, `sex`,  `department`, `division` 
-        FROM `teacherslist` WHERE  `firstName` LIKE '%$search%' ";
+        FROM `teacherslist` WHERE  `firstName` LIKE '%$search%' AND `assignedClass` LIKE 0 ";
         $ask = $mysql->query($query);
         if($ask->num_rows > 0){
             $i = 1;
