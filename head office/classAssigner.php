@@ -35,6 +35,9 @@ if(isset($_POST['class'], $_POST['section'], $_POST['tid'])){
                 return false;
             })
         })
+        $('#finish').click(function(){
+            $('#nm').empty()
+        })
         function statusChanger(id){
             document.getElementById(id).value = "Class Assigned";
             return true;
@@ -42,7 +45,7 @@ if(isset($_POST['class'], $_POST['section'], $_POST['tid'])){
         }
     </script>
 </head>
-<div>
+<div id="nm">
     <div>
     <?php 
     $i = 1;
@@ -81,5 +84,6 @@ if(isset($_POST['class'], $_POST['section'], $_POST['tid'])){
     
     
     ?>
+    <h6 id="finish" >Finish</h6>
     </div>
 </div>

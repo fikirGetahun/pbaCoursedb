@@ -12,6 +12,9 @@ require('../dbSetup/connect.php');
         function idGiver(id){
             $('#listed').load('assignClassForm.php', {id: id})
         }
+        function idGiver(id){
+            $('#listed').load('assignClassForm.php', {id: id})
+        }
 
     </script>
 </head>
@@ -55,6 +58,7 @@ if(isset($_POST['dep'], $_POST['search'], $_POST['div'])){
                     <td><?php echo $row['department']; ?> </td>
                     <td><?php echo $row['division']; ?> </td>
                     <td id="edit" onclick="idGiver(<?php echo $row['id'];?>, true);" ><button>Assign Class</button></td>
+                    <td id="edit" onclick="idGiver2(<?php echo $row['id'];?>, true);" ><button>Edit Assign Class</button></td>
                     </tr>
     
         
