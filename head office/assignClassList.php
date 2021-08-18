@@ -1,6 +1,6 @@
 <?php
 require('../dbSetup/connect.php');
-
+require('../dbSetup/mannage teacher.php');
 
 
 ?>
@@ -12,8 +12,8 @@ require('../dbSetup/connect.php');
         function idGiver(id){
             $('#listed').load('assignClassForm.php', {id: id})
         }
-        function idGiver(id){
-            $('#listed').load('assignClassForm.php', {id: id})
+        function idGiver2(id){
+            $('#listed').load('editAssignClass.php', {id: id})
         }
 
     </script>
@@ -27,7 +27,7 @@ if(isset($_POST['dep'], $_POST['search'], $_POST['div'])){
     $department = $_POST['dep'];
     if($division == "All" && $department == 'All'){
         $query = "SELECT `id`, `firstName`, `middleName`, `lastName`, `sex`,  `department`, `division` 
-        FROM `teacherslist` WHERE  `firstName` LIKE '%$search%' AND `assignedClass` LIKE 0 ";
+        FROM `teacherslist` WHERE  `firstName` LIKE '%$search%'  ";
         $ask = $mysql->query($query);
         if($ask->num_rows > 0){
             $i = 1;
@@ -58,7 +58,16 @@ if(isset($_POST['dep'], $_POST['search'], $_POST['div'])){
                     <td><?php echo $row['department']; ?> </td>
                     <td><?php echo $row['division']; ?> </td>
                     <td id="edit" onclick="idGiver(<?php echo $row['id'];?>, true);" ><button>Assign Class</button></td>
-                    <td id="edit" onclick="idGiver2(<?php echo $row['id'];?>, true);" ><button>Edit Assign Class</button></td>
+                    <?php
+                    $check = $teacher->assignedChecker($row['id']);
+                        if($check == 'yes'){
+                            ?>
+                            <td id="edit" onclick="idGiver2(<?php echo $row['id'];?>, true);" ><button>Edit Assign Class</button></td>
+                            <?php
+                        }
+                    ?>
+                    
+                    
                     </tr>
     
         

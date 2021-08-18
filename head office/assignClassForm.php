@@ -1,6 +1,6 @@
 <?php 
 require('../dbSetup/connect.php');
-require('../dbSetup/mannage student.php');
+require('../dbSetup/mannage teacher.php');
 
 if(isset($_POST['id'])){
     $id = $_POST['id'];
@@ -20,59 +20,90 @@ if(isset($_POST['id'])){
         $auth = $row['auth'];
     }    
 }
-global $nob;
-// to transform how many classes is to be assigned to a teacher
-if(isset($_POST['classe'])){
-    $nob = $_POST['classe'];
-    echo "inn";
+
+/// to send the class, section and teachers id to the api to be inserted to db
+if(isset($_POST['class'], $_POST['section'], $_POST['tid'])){
+    $ask = $teacher->classAssigner($_POST['class'],$_POST['section'], $_POST['tid']);
 }
+
+
+global $nob;
 
 ?>
 
 <head>
     <script src="../modules/jquery.js"></script>
     <script>
-        $('#sel').on('submit', function(){
-            $.ajax({
-                url: 'assignClassForm.php',
-                method: 'post',
-                data: $('#sel').serialize(),
-                success: function(index, text){
-                    $cno = []
-                    $('#sel').find('[name]').each(function(){
-                         $cno.push(this.value)
-                    })
-                    $id = $('#idv').val()
-                        $('#listter').load('classAssigner.php', {no: $cno[0], id: $id})
-                    
-                }
+     $(document).ready(function(){
+            $('#ass').hide()
+
+            $('form').on('submit', function(e){
+                e.preventDefault()
+                $.ajax({
+                    url: 'assignClassForm.php',
+                    method: 'post',
+                    data: $('form').serialize(),
+                    success: function(res, text){
+                        $('#ass').show()
+                        setTimeout(function() {
+                        $('#ass').hide();
+                        }, 2000);
+                    }
+                })
+                return false;
             })
-            return false;
+
         })
+        $('#finish').click(function(){
+            $('#nm').empty()
+        })
+
+
     </script>
 </head>
 <div>
-    <form id="sel" action="assignClassForm.php" method="POST">
+    
         <h5>Name</h5><span><?php echo $name; ?></span>
         <h5>Department: </h5><span><?php echo $department; ?></span>
         <h4>Division: </h4><span><?php echo $division; ?></span>
-        <h3>Select How Many Classes To Assign TO: </h3>
-        <select class="form-select" style="float:left;" name="classe" aria-label="Default select example">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-        </select>
-        <input type="submit" value="List Teachers">
-    </form>
-   <input id="idv" hidden value="<?php echo $id; ?>">
-    <div id="listter">
+        <div id="nm">
+    <div>
+ 
+    <form action="assignClassForm.php" method="POST">
 
+
+            <div id="<?php echo $i; ?>" class="block">
+            
+            <h5>Select Class & Section:</h5>
+            <label>Class: </label><br>
+            <select required class="form-select" style="float:left;" name="class" aria-label="Default select example">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+            <label>Section:</label><br>
+            <select required class="form-select" style="float:left;" name="section" aria-label="Default select example">
+            <option value="a">A</option>
+            <option value="b">B</option>
+            </select>
+            <!-- // this is to pass the teachers id that need to be class assigned -->
+            <input hidden id="tid" name="tid" value="<?php echo $id; ?>">
+            <input  type="submit" value="Assign Class To Teacher"> 
+            </div>
+            <div id="ass">Class Assigned</div>
+    
+            
+    
+
+    </form>
+    <h6 id="finish" >Finish</h6>
     </div>
+</div>
 </div>
