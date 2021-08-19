@@ -35,6 +35,7 @@ if(isset($_POST['auth'])){
     if($auth2 == 'ADMIN'){
       ?>
       <button class="nav-link" id="assignClass" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Assign Class</button>
+      <button class="nav-link" id="assignClass" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">View Assigned Class</button>
       <?php
     }
     ?>

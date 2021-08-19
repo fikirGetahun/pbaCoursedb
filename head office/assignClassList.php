@@ -62,7 +62,7 @@ if(isset($_POST['dep'], $_POST['search'], $_POST['div'])){
                     $check = $teacher->assignedChecker($row['id']);
                         if($check == 'yes'){
                             ?>
-                            <td id="edit" onclick="idGiver2(<?php echo $row['id'];?>, true);" ><button>Edit Assign Class</button></td>
+                            <td id="edit" onclick="idGiver2(<?php echo $row['id'];?>, true);" ><button>Edit Assigned Class</button></td>
                             <?php
                         }
                     ?>

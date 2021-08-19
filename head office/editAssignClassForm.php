@@ -23,8 +23,8 @@ if(isset($_POST['class5r'], $_POST['cid'])){
                     type:'post',
                     data: $('form').serialize(),
                     success: function(x, y){
-                        $('#br').load('editAssignClass.php', {id: id})
-                    }
+                        $('#br').load('editedShowAssignClass.php')
+                    } 
                     
                 })
                 return false;
