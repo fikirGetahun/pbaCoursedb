@@ -23,8 +23,7 @@ function classAssigner($class, $section, $id){
 //class editor
 function classEditor($class, $section, $id){ //id here is the assigned class prymery key
     include('../dbSetup/connect.php');
-    $query = "UPDATE `classtable` SET `class`='$class',`section`= '$section' WHERE `id` = '$id'";
-
+    $query = "UPDATE `classtable` SET `class` = '$class', `section` = '$section' WHERE `classtable`.`id`= '$id'";
     $ask = $mysql->query($query);
 }
 

@@ -2,14 +2,29 @@
 require('../dbSetup/connect.php');
 require('../dbSetup/mannage teacher.php');
 
-if(isset($_POST['class'], $_POST['section'], $_POST['id'])){
-    $class = $_POST['class'];
-    $sec = $_POST['section'];
-    $cid = $_POST['id'];
-    $out = $teacher->classEditor($class, $sec, $cid);
-}
+
+?>
+<head>
+    <script src="../modules/jquery.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#old').hide()
+            $('#editForm').hide()
+        })
+        function editor(cid, classs){
+            $('#old').show()
+            $('#editForm').show()
+            document.getElementById('old').innerHTML = '<h5>Edit This Class</h5><br> <h6>Class: '+classs+'</h6>';
+            $('#editForm').load('editAssignClassForm.php', {cid: cid})
+        }
 
 
+    </script>
+</head>
+    <div id="old"></div>
+    <div id="editForm"></div>
+
+<?php
 
 // getting the teachers id
 if(isset($_POST['id'])){
@@ -22,19 +37,28 @@ if(isset($_POST['id'])){
     $ask = $mysql->query($query);   // about the class
     $ask2 = $mysql->query($query2); // about the teacher
     $I = 1;
+    ?>
+
+
+
+    </div>
+    
+    
+    <?php
     while($row = $ask->fetch_assoc()){
         ?>
         <div>
         <h6>Assigned Class: <?php echo $I ?></h6>
         <h5>Class: <?php echo $row['class'].''.$row['section']; ?></h5>
+        <button onclick="editor(<?php echo $row['id'] ?>, '<?php echo $row['class'].''.$row['section']; ?>' )" >Edit Assigned Class</button>
         </div>
+        
 
         <?php
         $I = $I + 1;
     }
     
-    $class = $row['class'];
-    $sec = $row['section'];
+
 }
 
 // $('#id option[value="0"]').attr('selected', 'selected')
