@@ -99,7 +99,7 @@ if(isset($_POST['auth2'])){
             </div>      
                 <?php
             }else{
-                echo 'no match bro';
+                echo 'no match bro1';
             }
         }
         if($class == "All" && $section != 'All'){
@@ -155,7 +155,7 @@ if(isset($_POST['auth2'])){
             </div>      
                 <?php
             }else{
-                echo 'no match bro';
+                echo 'no match bro2';
             }
         }
         if($section == 'All' && $class != 'All'){
@@ -211,7 +211,7 @@ if(isset($_POST['auth2'])){
             </div>      
                 <?php
             }else{
-                echo 'no match bro';
+                echo 'no match bro3';
             }
         }
         else{
@@ -268,7 +268,7 @@ if(isset($_POST['auth2'])){
             </div>      
                 <?php
             }else{
-                echo 'no match bro';
+                echo 'no match bro4';
             }
         }            
         

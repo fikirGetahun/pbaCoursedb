@@ -1,44 +1,35 @@
 <?php 
-require('../dbSetup/mannage teacher.php');
-
-global $cidr;
-if(isset($_POST['cid'])){
-    $cidr = $_POST['cid'];
-}
-
-if(isset($_POST['class5r'], $_POST['cid'])){
-    $asks = $teacher->classEditor($_POST['class5r'], $_POST['section5r'], $_POST['cid']);
-}
 
 
 ?>
 <head>
-<script src="../modules/jquery.js"></script>
-<script>
+    <script src="../modules/jquery.js"></script>
+    <script>
         $(document).ready(function(){
             $('form').on('submit', function(){
-                
                 $.ajax({
-                    url:'editAssignClassForm.php',
-                    type:'post',
+                    url: 'viewClass.php',
+                    type: 'post',
                     data: $('form').serialize(),
-                    success: function(x, y){
-                        // $('#br').load('editedShowAssignClass.php')
-                        document.getElementById('br').innerHTML = "<h6>Edited.</h6>"
-                    } 
+                    success: function(){
+                        $valls = []
+                        $('form').find('[name]').each(function(){
+                            $valls.push(this.value)
+                        })
+                        $('#tlist').load('viewClassList.php', {class: $valls[0], sec: $valls[1]})
+                    }
                     
                 })
                 return false;
             })
         })
-
     </script>
-
 </head>
 
-
-<div id="br">
-<form action='editAssignClassForm.php' method="POST">
+<div>
+    <h5>Select Class and Section to View all the teachers assigned.</h5>
+<div id="br2">
+<form action='viewClass.php' method="POST">
     <h5>Select Class & Section:</h5>
     <label>Class: </label><br>
     <select  class="form-select" style="float:left;" name="class5r" aria-label="Default select example">
@@ -58,8 +49,11 @@ if(isset($_POST['class5r'], $_POST['cid'])){
     <option value="a">A</option>
     <option value="b">B</option>
     </select>
-    <input hidden name="cid" value="<?php echo $cidr; ?>">
-    <input type="submit" value="Edit">
+    <input type="submit" value="List All Teachers">
 
 </form>
+        <div id="tlist">
+
+        </div>
+</div>
 </div>

@@ -40,6 +40,37 @@ function assignedChecker($id){ // the id is the teachers id that is given from t
         return 'no';
     }
 }
+
+// assigned teachers listing function
+function assignedLister($class, $section){
+    include('connect.php');
+    $query = "SELECT  `teacherid`, `class`, `section`, `department` FROM `classtable`
+     WHERE `class` = '$class' AND `section` = '$section'";
+    $ask = $mysql->query($query);
+    if($ask){
+        if($ask->num_rows > 0){
+            return $ask;
+        }
+    }
+}
+    
+
+//teacher name and info lister
+function teacherInfo($id){
+    include('connect.php');
+    $query = "SELECT  `id`, `firstName`, `middleName`, `lastName`, `sex`, `assignedClass`, `department`, `section`,
+    `profession`, `photoPath`, `username`, `password`, `phone`, `division`, `auth`
+    FROM `teacherslist` WHERE `id` LIKE '$id'";
+
+    $ask = $mysql->query($query);
+    if($ask){
+        if($ask->num_rows > 0){
+            return $ask;
+        }
+    }
+}
+
+
 }
 
 $teacher = new teacherManage;

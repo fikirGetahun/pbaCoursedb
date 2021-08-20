@@ -4,11 +4,8 @@ require('../dbSetup/mannage teacher.php');
 
 if(isset($_POST['id'])){
     $id = $_POST['id'];
-    $query = "SELECT  `id`, `firstName`, `middleName`, `lastName`, `sex`, `assignedClass`, `department`, `section`,
-    `profession`, `photoPath`, `username`, `password`, `phone`, `division`, `auth`
-    FROM `teacherslist` WHERE `id` LIKE '$id'";
-    $ask = $mysql->query($query);
-    while($row = $ask->fetch_assoc()){
+    $roww = $teacher->teacherInfo($id);
+    while($row = $roww->fetch_assoc() ){
         $id = $row['id'];
         $name = $row['firstName'].' '.$row['middleName'].' '.$row['lastName'];
         $sex = $row['sex'];
