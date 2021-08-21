@@ -50,6 +50,8 @@ function assignedLister($class, $section){
     if($ask){
         if($ask->num_rows > 0){
             return $ask;
+        }else{
+            return false;
         }
     }
 }
@@ -66,6 +68,8 @@ function teacherInfo($id){
     if($ask){
         if($ask->num_rows > 0){
             return $ask;
+        }else{
+            return false;
         }
     }
 }

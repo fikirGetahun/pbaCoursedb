@@ -24,6 +24,11 @@ if(isset($_POST['auth'])){
                 $(this).addClass('active')
                 $('.nav-link').not(this).removeClass('active')
               })
+              $('#viewClass').click(function(){
+                $('#tabContent').load('viewClass.php')
+                $(this).addClass('active')
+                $('.nav-link').not(this).removeClass('active')
+              })
           })
         </script>
       </head>
@@ -35,7 +40,7 @@ if(isset($_POST['auth'])){
     if($auth2 == 'ADMIN'){
       ?>
       <button class="nav-link" id="assignClass" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Assign Class</button>
-      <button class="nav-link" id="assignClass" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">View Assigned Class</button>
+      <button class="nav-link" id="viewClass" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">View Assigned Class</button>
       <?php
     }
     ?>
