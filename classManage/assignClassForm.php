@@ -34,10 +34,10 @@ global $nob;
      $(document).ready(function(){
             $('#ass').hide()
 
-            $('form').on('submit', function(e){
+            $('#assg').on('submit', function(e){
                 e.preventDefault()
                 $.ajax({
-                    url: 'assignClassForm.php',
+                    url: '../classManage/assignClassForm.php',
                     method: 'post',
                     data: $('form').serialize(),
                     success: function(res, text){
@@ -66,7 +66,7 @@ global $nob;
         <div id="nm">
     <div>
  
-    <form action="assignClassForm.php" method="POST">
+    <form id="assg" action="../classManage/assignClassForm.php" method="POST">
 
 
             <div id="<?php echo $i; ?>" class="block">

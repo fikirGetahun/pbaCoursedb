@@ -10,10 +10,10 @@ require('../dbSetup/mannage teacher.php');
     <script>
 
         function idGiver(id){
-            $('#listed').load('assignClassForm.php', {id: id})
+            $('#listed').load('../classManage/assignClassForm.php', {id: id})
         }
         function idGiver2(id){
-            $('#listed').load('editAssignClass.php', {id: id})
+            $('#listed').load('../classManage/editAssignClass.php', {id: id})
         }
 
     </script>

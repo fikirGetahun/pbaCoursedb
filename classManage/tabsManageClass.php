@@ -16,16 +16,16 @@ if(isset($_POST['auth'])){
               $('#assignClass').click(function(){
                 $('#assignClass').addClass('active')
                 $('.nav-link').not('#assignClass').removeClass('active')
-                $('#tabContent').load('assignClassSearch.php')
+                $('#tabContent').load('../classManage/assignClassSearch.php')
               })
               $('#markAssisment').click(function(){
                 $auth2 = $('#auth2').val()
-                $('#tabContent').load('markAssismentStudent.php', {auth: $auth2})
+                $('#tabContent').load('../classManage/markAssismentStudent.php', {auth: $auth2})
                 $(this).addClass('active')
                 $('.nav-link').not(this).removeClass('active')
               })
               $('#viewClass').click(function(){
-                $('#tabContent').load('viewClass.php')
+                $('#tabContent').load('../classManage/viewClass.php')
                 $(this).addClass('active')
                 $('.nav-link').not(this).removeClass('active')
               })

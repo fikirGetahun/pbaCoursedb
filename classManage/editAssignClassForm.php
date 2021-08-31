@@ -19,7 +19,7 @@ if(isset($_POST['class5r'], $_POST['cid'])){
             $('form').on('submit', function(){
                 
                 $.ajax({
-                    url:'editAssignClassForm.php',
+                    url:'../classManage/editAssignClassForm.php',
                     type:'post',
                     data: $('form').serialize(),
                     success: function(x, y){

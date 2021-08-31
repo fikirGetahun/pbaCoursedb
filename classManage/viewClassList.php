@@ -8,7 +8,13 @@ if(isset($_POST['class'], $_POST['sec'])){
 
 ?>
 <div>
-<table class="table caption-top">
+
+    <?php
+    $rowq = $teacher->assignedLister($class, $sec);
+    $i = 1;
+    if($rowq){
+        ?>
+        <table class="table caption-top">
     <caption>List of users</caption>
     <thead>
         <tr>
@@ -19,9 +25,7 @@ if(isset($_POST['class'], $_POST['sec'])){
         </tr>
     </thead>
 <tbody>
-    <?php
-    $rowq = $teacher->assignedLister($class, $sec);
-    $i = 1;
+        <?php
     while($row = $rowq->fetch_assoc()){
         ?>
         <tr>
@@ -40,5 +44,12 @@ if(isset($_POST['class'], $_POST['sec'])){
     ?>
     </tr>
 </tbody>
+<?php
+    }
+    else{
+        echo "NOT Assigned!";
+    }
+    ?>
+
 
 </div>

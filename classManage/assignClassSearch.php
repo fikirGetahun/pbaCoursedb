@@ -22,7 +22,7 @@
 
             $('input').keyup(function(){
                 $.ajax({
-                    url: 'assignClassList.php',
+                    url: '../classManage/assignClassList.php',
                     type: 'post',
                     data: $('form').serialize(),
                     success: function(res, text){
@@ -31,7 +31,7 @@
                             $('form').find('[name]').each(function(){
                                 $reqq.push(this.value)
                             })
-                            $('#list').load('assignClassList.php', {search: $reqq[0], div: $reqq[1], dep: $reqq[2]})
+                            $('#list').load('../classManage/assignClassList.php', {search: $reqq[0], div: $reqq[1], dep: $reqq[2]})
                         }else{
                             alert('DATABASE CONNECTION ERROR')
                         }
@@ -40,7 +40,7 @@
 
             $('form').on('submit', function(){
                 $.ajax({
-                    url: 'assignClassList.php',
+                    url: '../classManage/assignClassList.php',
                     type: 'post',
                     data: $('form').serialize(),
                     success: function(res, text){
@@ -49,7 +49,7 @@
                             $('form').find('[name]').each(function(){
                                 $reqq.push(this.value)
                             })
-                            $('#list').load('assignClassList.php', {search: $reqq[0], div: $reqq[1], dep: $reqq[2]})
+                            $('#list').load('../classManage/assignClassList.php', {search: $reqq[0], div: $reqq[1], dep: $reqq[2]})
                         }else{
                             alert('DATABASE CONNECTION ERROR')
                         }

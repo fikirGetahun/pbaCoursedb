@@ -8,7 +8,7 @@
         $(document).ready(function(){
             $('form').on('submit', function(){
                 $.ajax({
-                    url: 'viewClass.php',
+                    url: '../classManage/viewClass.php',
                     type: 'post',
                     data: $('form').serialize(),
                     success: function(){
@@ -16,7 +16,7 @@
                         $('form').find('[name]').each(function(){
                             $valls.push(this.value)
                         })
-                        $('#tlist').load('viewClassList.php', {class: $valls[0], sec: $valls[1]})
+                        $('#tlist').load('../classManage/viewClassList.php', {class: $valls[0], sec: $valls[1]})
                     }
                     
                 })
@@ -30,7 +30,6 @@
     <h5>Select Class and Section to View all the teachers assigned.</h5>
 <div id="br2">
 <form action='viewClass.php' method="POST">
-    <h5>Select Class & Section:</h5>
     <label>Class: </label><br>
     <select  class="form-select" style="float:left;" name="class5r" aria-label="Default select example">
         <option value="1">1</option>

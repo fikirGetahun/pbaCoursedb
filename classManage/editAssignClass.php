@@ -15,7 +15,7 @@ require('../dbSetup/mannage teacher.php');
             $('#old').show()
             $('#editForm').show()
             document.getElementById('old').innerHTML = '<h5>Edit This Class</h5><br> <h6>Class: '+classs+'</h6>';
-            $('#editForm').load('editAssignClassForm.php', {cid: cid})
+            $('#editForm').load('../classManage/editAssignClassForm.php', {cid: cid})
         }
 
 

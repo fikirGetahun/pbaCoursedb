@@ -33,9 +33,12 @@ if(isset($_SESSION['id'])){
         <script>
             $(document).ready(function(){
                 $('#home').click(function(event){
+                    $autht = $('#auth').val()
                     $('#v-pills-tabContent')
                     $('#home').addClass('active')
+                    $id = $('#tid').val()
                     $('.nav-link').not('#home').removeClass('active')
+                    $('#v-pills-tabContent').load('../homePage/tabsHome.php', {auth: $autht, tid: $id})
                 })
                 $('#headOffice').click(function(event){
                     $('#headOffice').addClass('active')
@@ -57,7 +60,7 @@ if(isset($_SESSION['id'])){
                     $autht = $('#auth').val()
                     $('#class').show().addClass('active')
                     $('.nav-link').not('#class').removeClass('active')
-                    $('#v-pills-tabContent').load('tabsManageClass.php', {auth: $autht})
+                    $('#v-pills-tabContent').load('../classManage/tabsManageClass.php', {auth: $autht})
                 })
                 $('#report').click(function(){
                     $('#report').addClass('active')
@@ -75,7 +78,7 @@ if(isset($_SESSION['id'])){
 
     <!-- vertical tabs to go to manage students, manage teachers.. -->
     <div id="vertical" style="float: left;">
-            
+            <input id="tid" hidden value="<?php echo $id; ?>"
             <div class="d-flex align-items-start">
                 <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <button class="nav-link active" id="home" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</button>
