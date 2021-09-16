@@ -16,6 +16,15 @@ $row = $outr->fetch_assoc();
     <script>
 
     </script>
+    <style>
+        .panal {
+            border: 1px black solid;
+            float: left;
+            width: 20%;
+            margin: 20px;
+            padding: 13px;
+        }
+    </style>
 
 </head>
 <div>

@@ -31,6 +31,7 @@ if(isset($_SESSION['id'])){
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <script src="../modules/jquery.js"  ></script>
         <script>
+            
             $(document).ready(function(){
                 $('#home').click(function(event){
                     $autht = $('#auth').val()
@@ -78,7 +79,7 @@ if(isset($_SESSION['id'])){
 
     <!-- vertical tabs to go to manage students, manage teachers.. -->
     <div id="vertical" style="float: left;">
-            <input id="tid" hidden value="<?php echo $id; ?>"
+            <input id="tid" hidden value="<?php echo $id; ?>">
             <div class="d-flex align-items-start">
                 <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <button class="nav-link active" id="home" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</button>

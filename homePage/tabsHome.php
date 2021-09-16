@@ -7,7 +7,7 @@ if(isset($_POST['auth'])){
 if(isset($_POST['tid'])){
   $uid = $_POST['tid'];
 }
-echo 'brooo'.$uid;
+
 ?>
 
 
