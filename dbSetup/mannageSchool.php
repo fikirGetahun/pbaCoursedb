@@ -12,7 +12,7 @@ class mannageSchoolcls{
          FROM `yearmanage` WHERE `choosenyear` = 1 ";
 
         $ask = $mysql-> query($query2);
-        $row = $mysql->fetch_assoc();
+        $row = $ask->fetch_assoc();
 
         $cyear = $row['year'];
         $chyear = $row['choosenyear'];
@@ -20,18 +20,25 @@ class mannageSchoolcls{
         // this is to change the choosenyear to the new starting year so we must make the choosenyear of the previous one false or 0
         $query3 = "UPDATE `yearmanage` SET `choosenyear`= 0,`currentyear`= 0 WHERE `year` = '.$cyear.'";
 
+        $ask2 = $mysql-> query($query3);
+
+
         // inserting the year managing data
         $query = "INSERT INTO `yearmanage`(`choosenyear`, `currentyear`, `currentquarter`, `command`, `status`, `q1`, `q2`, `q3`, `q4`)
          VALUES (1, 1, 1, 0, 'LIVE','LIVE', 'NOT', 'NOT', 'NOT')";
         $mysql -> query($query);
-
+        return 'yes';
 
     }
 
     function currentQuarterChecker(){
+        include('connect.php');
+        // first it checks that the teachers have submited all 
+        // we do that by checking from the class table
+        $query = "";
 
     }
 
 }
-
+$manageSchool = new mannageSchoolcls;
 ?>

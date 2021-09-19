@@ -38,7 +38,7 @@ if(isset($_POST['class5r'], $_POST['cid'])){
 
 
 <div id="br">
-<form action='editAssignClassForm.php' method="POST">
+<form action='../classManage/editAssignClassForm.php' method="POST">
     <h5>Select Class & Section:</h5>
     <label>Class: </label><br>
     <select  class="form-select" style="float:left;" name="class5r" aria-label="Default select example">

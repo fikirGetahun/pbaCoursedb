@@ -37,6 +37,20 @@ if(isset($_POST['auth2'])){
                     })
 
                     $('form').on('submit', function(){
+                        $.ajax({
+                        url: 'viewStudent.php',
+                        method: 'post',
+                        data: $('form').serialize(),
+                        success: function(res, mo){
+                            $req = []
+                            $('form').find('[name]').each(function(){
+                                $req.push($(this).val())
+                             })
+                             $auth2 = $('#auth2').val()
+                             $('#content').load('viewPage.php', {searchData : $req[0], division: $req[1], auth2: $auth2, student: false })
+                   
+                        }
+                    })
                         return false
                     })
 
