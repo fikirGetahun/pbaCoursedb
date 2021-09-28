@@ -24,9 +24,12 @@ $row = $outr->fetch_assoc();
         .panal {
             border: 1px black solid;
             float: left;
-            width: 20%;
-            margin: 20px;
-            padding: 13px;
+            width: 10%;
+            margin: 6px;
+            padding: 10px;
+        }
+        p {
+            font-size:12px;
         }
     </style>
 
@@ -62,6 +65,10 @@ $row = $outr->fetch_assoc();
         </p>
     </div>
     <!-- // end year or this block will only show if current year and chosen year is true else its on previous year that already endded-->
+    <?php
+        if()
+    
+    ?>
     <div class='panal'>
         <h5>End Year</h5>
         <p>

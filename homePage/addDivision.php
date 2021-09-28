@@ -17,12 +17,28 @@
             
         // }
             $(document).ready(function(){
-                $('#f1').on('submit', function(){
+                $i = 1
+                function toAddDivision(){
+                    $('#f1').on('submit', function(e){
+                        e.preventDefault()
+                        $.ajax({
+                            url: '../homePage/addDivision.php',
+                            type: 'GET',
+                            data: $('form').serialize(),
+                            success: function(){
 
-                    $div = $('#inputPassword5').val()
+                            }
+                        })
+                    $div = $('#divisionw').val()
+                    document.getElementById('shj'+$i).innerHTML = `
+                        <h5>New Division Added</h5>
+                        <h6> >> `+ $div + ` </h6>
+                    `
                     document.getElementById('show1').innerHTML += '<br>'+ $div
                     return false
                 })
+                }
+
             })
     </script>
 </head>
@@ -31,12 +47,14 @@ require('../dbSetup/mannageSchool.php');
 
 $obj = $manageSchool-> toStartYear();
 ?>
-    <div id="sh0">
+    <div id="allTo">
+    <div id="shj1">
     <lable>Add Division.</lable>
     <form id="f1" action="../homePage/addDivision.php"   method="GET" >
-    <input required  type="text" id="inputPassword5" name="divv" class="form-control" aria-describedby="passwordHelpBlock">
-    <input type="submit" onclick="divHandler()"  value="Add Division">
+    <input required  type="text" id="divisionw" name="divv" class="form-control" aria-describedby="passwordHelpBlock">
+    <input type="submit" onclick="toAddDivision()"  value="Add Division">
     </form>
+    </div>
     </div>
     <div id="show1">
 

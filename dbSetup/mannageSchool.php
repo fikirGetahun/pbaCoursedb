@@ -39,6 +39,20 @@ class mannageSchoolcls{
 
     }
 
+    function liveYearChecker(){
+        include('connect.php');
+        $query = 'SELECT  `choosenyear`, `currentyear`, `status` FROM `yearmanage`
+         WHERE `choosenyear`= 1 AND `currentyear` = 1 AND `status` = LIVE ';
+
+        $ask = $mysql->query($query);
+        $row = $ask->num_rows;
+        if($row > 0){
+            return 'LIVE';
+        }else{
+            return 'END';
+        }
+    }
+
 }
 $manageSchool = new mannageSchoolcls;
 ?>
